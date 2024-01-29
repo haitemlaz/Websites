@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="logo-container">
+        <img src="logo.png" alt="Logo" class="logo" />
+    </div>
+    <div class="container">
+        <div class="center">
+            <label>Recipe Id :</label>
+            <input type="text" id="recipe_id" />
+            <button id="btn">search</button>
+        </div>
+        <div class="popup">
+            <ul>
+                <li id="drName"></li>
+                <li id="date"></li>
+                <li id="duration"></li>
+                <ul id="medsContainer"></ul>
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script type="module" src="scriptPharmacie.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin-top: 20px;
+        }
+        
+        .logo {
+            max-width: 200px;
+        }
+        
+        .center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .container {
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid black;
+            margin: 100px auto 0;
+            width: 1300px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
+        }
+        
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 300px;
+            max-width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        #btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .popup {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            overflow-y: auto;
+            width: 1200px;
+            height: 350px;
+        }
+        
+        .popup ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .popup li {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+    </style>
+</body>
+
+</html>

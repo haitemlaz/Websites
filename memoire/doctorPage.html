@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctor</title>
+    <link rel="stylesheet" href="CSS/doctorCss.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+
+
+    <!-- Add additional services that you want to use -->
+
+    <!--     firebase SDK       ------------------------------------------->  
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-database.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
+
+ 
+    
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-container">
+        <img src="logo.png" alt="" srcset="" />
+      </div>
+
+      <ul>
+    
+
+        <li><a href="#" class="sidebarItems" id="sb-Diseases">Diseases</a></li>
+        <li><a href="#" class="sidebarItems" id="sb-History">Prescriptions History</a></li>
+        <li><a href="#" class="sidebarItems" id="sb-Profile">Profile</a></li>
+      </ul>
+    </div>
+
+    <!-- Page content -->
+    <div class="section-1">
+      <div class="info">
+        <h1 id="name" ></h1>
+      <h2 id="specialite"></h2>
+    </div>
+      
+ <div class="search"> 
+  <input
+        type="text"
+        placeholder="Enter the name of patient"
+        class="serial-num"
+        id="search-input"
+      />
+      <ul id="recommendations"></ul>
+    </div>
+     
+
+
+      <button class="add-patient" id="add-patient">Add a patient</button>
+    </div>
+    <div class="section-2">
+      <input type="number" name="duration" class="duration"  id="duration" placeholder="Treatment duration">
+     
+      <input type="date" class="date-input" id="date-input"/>
+    </div>
+
+    <div class="content">
+
+      <div class="Prescription" id="Prescription"></div>
+
+      <!-- <div class="Prescription">
+        <label for="prescription1">Prescription 1:</label>
+        <input type="text" id="prescription1" name="prescription1" />
+      </div> -->
+      <div id="prescription-container" style="margin: 0"></div>
+      <button id="add-prescription">Add Medicine</button>
+    </div>
+    <div class="button-container">
+      <button class="cancel-button" id="cancel-button">Cancel</button>
+      <button class="confirm-button" id="confirm-button">Confirm</button>
+    </div>
+    <div class="med-form" id="med-form">
+      <div class="med-body">
+        <div id="med-name-div">
+          <label for="">Name</label>
+          <input type="text" placeholder="Name" id="med-name"/>
+          <ul id="med-recommendation"></ul>
+        </div>
+        <div>
+          <label for="">Dose</label>
+          <input type="text" placeholder="Dose" id="dose"/>
+        </div>
+        <div>
+          <label for="quantity">Quantity</label>
+          <input type="number" name="quantity" id="quantity">
+        </div>
+        <div>
+          <label for="repititionAfter">Consum every : </label>
+          <input type="number" name="repititionAfter" id="repititionAfter" placeholder="1"> days
+        </div>
+        <div class="scroll-view">
+         
+        </div>
+        <div class="form-buttons">
+          <button id="btn-form-add-task">Add</button>
+        </div>
+        <div class="form-buttons">
+          <button id="btn-form-discard">Discard</button>
+          <button id="btn-form-add">Add</button>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div id="overlay"></div>
+    <div id="print">
+
+      <div>Do you want to print the prescription ?</div>
+      <button id="print-btn">Print</button>
+      <button id="cancel-print-btn">Cancel</button>
+    </div>
+
+
+    <div class="patientVerify" id="patientVerify">
+      <div class="form-content-add-patient">
+        <label for="patient-id-add">ID</label>
+        <input type="number" id="patient-id-add" placeholder="Enter ID" />
+      </div>
+      <div class="form-buttons-add-patient">
+        <button id="verify-id">Verify</button>
+      </div>
+    </div>
+    <div class="patientAdd">
+      <div class="form-group-add-patient">
+        <label class="form-label-add-patient" for="name">Name:</label>
+        <input class="form-input-add-patient" type="text" id="patient-name"  />
+      </div>
+      <div class="form-group-add-patient">
+        <label class="form-label-add-patient" for="age">Age:</label>
+        <input class="form-input-add-patient" type="number" id="age"  />
+      </div>
+      <div class="form-group-add-patient">
+        <label class="form-label-add-patient" for="gender">Gender:</label>
+        <select class="form-input-add-patient" id="gender" >
+          <option value="">Select Gender</option>
+          <option value="m">Male</option>
+          <option value="f">Female</option>
+        </select>
+      </div>
+      <div class="form-group-add-patient">
+        <label class="form-label-add-patient" for="phoneNumber">Phone Number:</label>
+        <input class="form-input-add-patient" type="tel" id="phoneNumber"  />
+      </div>
+      <div class="form-group-add-patient">
+        <label class="form-label-add-patient" for="insurence">Insurence:</label>
+        <select  class="form-input-add-patient" name="insurence" id="insurence">
+          <option value=1>available</option>
+          <option value=0>unavailable</option>
+        </select>
+      </div>
+      <div class="form-group-add-patient">
+        <label class="form-label-add-patient" for="email">Email:</label>
+        <input class="form-input-add-patient" type="email" id="email"  />
+      </div>
+      <div class="form-group-add-patient">
+        <label class="form-label-add-patient" for="password">Password:</label>
+        <input class="form-input-add-patient" type="password" id="password"  />
+      </div>
+      <div class="form-group-add-patient">
+        <label class="form-label-add-patient" for="confirmPassword"
+          >Confirm Password:</label
+        >
+        <input
+          class="form-input-add-patient"
+          type="password"
+          id="confirmPassword"
+          
+        />
+      </div>
+      <div class="form-buttons-add-patient">
+        <button id="add-patient-btn-cancel">Cancel</button>
+        <button id="add-patient-btn-confirm">Confirm</button>
+      </div>
+    </div>
+
+    <div class="patientProfile " id="patientProfile" >
+      <div class="patientInfo">
+
+        <div class="profile-name"> 
+          <div class="label">name</div>
+          <div class="value-name"></div>
+        </div>
+        <div class="profile-age"> 
+          <div class="label">age</div>
+          <div class="value-age"></div>
+        </div>
+        <div class="profile-gender"> 
+          <div class="label">gender</div>
+          <div class="value-gender"></div>
+        </div>
+        <div class="profile-phone"> 
+          <div class="label">phone</div>
+          <div class="value-phone"></div>
+        </div>
+        <div class="profile-email"> 
+          <div class="label">email</div>
+          <div class="value-email"></div>
+        </div>
+        <div class="profile-insurance"> 
+          <div class="label">insurance</div>
+          <div class="value-insurance"></div>
+        </div>
+
+      </div>
+    </div>
+<div class="recipes-popup">
+    <div class="recipes">
+     
+    </div>
+</div>
+
+<div class="diseases-popup">
+ 
+  <div class="diseases">
+
+  </div>
+<div class="add-disease">
+   <button id="add-disease">+</button>
+  <input type="text" id="disease-input" placeholder="Disease name">
+  <button id="save-disease">Save</button>
+</div>
+  
+  </div>
+
+    <!-- <script src="app.js"></script> -->
+    <script type="module" src="script.js" ></script>
+  </body>
+</html>

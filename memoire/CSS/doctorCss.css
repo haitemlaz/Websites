@@ -1,0 +1,997 @@
+* {
+  
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global styles */
+body {
+  
+  background-color: #f8f8f8;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-left: 220px;
+}
+
+/* Custom styles for the sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 210px;
+  background-color: #c6def7;
+  padding: 20px;
+  padding-left: 5px;
+  padding-right: 30px;
+}
+
+.sidebar .logo-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.sidebar .logo-container img {
+  width: 200px; /* Adjust the width value to your liking */
+  margin-left: 5px;
+}
+
+.sidebar h1 {
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-left: 0px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebarItems {
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+}
+
+.sidebarItems:hover, .sidebarItems.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 200px; /* Adjust the width as needed */
+}
+/* ---  enter serial + add patient   ---------------------------------- */
+
+.section-1 {
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+  /* overflow-y: auto; */
+  /* max-height: calc(100vh - 40px); */
+  z-index: 999;
+}
+
+
+.search {
+  position: relative; /* Added position property */
+  display: block;
+  width: 50%;
+  margin-left: 25px;
+}
+#search-input {
+
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+}
+#recommendations {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 5px;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+   display: none; 
+   z-index: 999; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  overflow-y: auto;
+  max-height: 140px;
+}
+
+#recommendations li {
+  transition: all 0.3s ease;
+  z-index: 999;
+  padding: 10px;
+  cursor: pointer;
+}
+#recommendations li a{
+  font-weight: 600;
+}
+#recommendations li:hover {
+  background-color: #f0f0f0;
+}
+ .patient-id {
+  display: none;
+  font-size: small;
+  font-weight: 300;
+  color: rgb(85, 85, 85);
+ }
+
+ #recommendations li:hover .patient-id{
+  display: block;
+}
+
+
+
+/* 
+li {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 18px;
+  color: #333;
+  text-decoration: none;
+  background-color:  #f8f8f8;
+} */
+/* 
+li:hover {
+  border-color: #aaa;
+  background-color: #eaeaea;
+
+} */
+
+.add-patient {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+  right: 0; 
+}
+.add-patient:hover {
+  background-color: #fff;
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+
+
+.section-1 .info {
+left: 0;
+
+}
+
+/* ********************************************************************** */
+.section-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section-2 input {
+   margin: 25px 80px; /* Adjust the margin value to your liking */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px; /* Adjust the width value to your liking */
+
+}
+.section-2 .date-input {
+ }
+.section-2 .duration{
+  height: 43px;
+  /* margin: 25px 10px; 
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px; Adjust the width value to your liking */
+}
+
+
+/* ************************************************************************** */
+
+.content button:hover {
+  background-color: #0062cc;
+}
+.content {
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid black;
+  margin: 0 auto;
+  width: 1000px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-y: auto;
+  
+}
+
+#Prescription {
+  /* margin-right: 50px; */
+  font-size: 20px;
+  text-align: left;
+  margin-left: 60px;
+  position: relative;
+}
+
+#Prescription div {
+  transition: all 0.2s ease;
+  border: black;
+  border-radius: 5px;
+  width: 500px;
+  border: 1px solid #989898;
+  padding: 10px;
+}
+
+#Prescription div:hover {
+  cursor: pointer;
+  background-color:  #ececec;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+#Prescription i {
+  transition: all 0.2s ease;
+  background-color: #ececec;
+  right: 20px;
+  position: absolute;
+  display: none;
+}
+
+#Prescription  i:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+#Prescription div:hover i{
+ display: inline;
+}
+
+#Prescription a{
+  padding: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  width: 400px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+/* .content label {
+  margin-right: 50px;
+  font-size: 20px;
+} */
+
+.content div {
+  margin: 10px;
+}
+.content input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #989898;
+  border-radius: 5px;
+  width: 400px; /* Adjust the width value to your liking */
+}
+.content button {
+  position: absolute;
+  bottom: 0;
+  left: 52%;
+  transform: translatey(-300%);
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+}
+/* ************************************************* */
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-container button {
+  margin: 10px 50px; /* Adjust the margin value to your liking */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.confirm-button {
+  background-color: #007bff;
+}
+.confirm-button:hover {
+  color: rgb(113, 170, 113);
+  border: 1px solid rgb(113, 170, 113);
+  background-color: #fff;
+}
+.cancel-button {
+  background-color: #007bff;
+}
+.cancel-button:hover {
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  background-color: #fff;
+}
+
+
+
+/*     //////////////                med form             //////////           */
+
+.med-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  width: 1000px;
+  max-width: 80%;
+  height: auto;
+  overflow-y: auto;
+}
+.med-form.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.med-body {
+  padding: 15px;
+}
+/**********************  med name ************/
+#med-name-div{
+width: fit-content;
+position: relative;
+}
+
+#med-recommendation {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 5px;
+  position: absolute;
+  /* top: calc(100% + 5px); */
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+   display: none; 
+   z-index: 999; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  overflow-y: auto;
+  max-height: 140px;
+}
+
+#med-recommendation li {
+  transition: all 0.3s ease;
+  z-index: 999;
+  padding: 10px;
+  cursor: pointer;
+}
+#med-recommendation li a{
+  font-weight: 600;
+}
+#med-recommendation li:hover {
+  background-color: #f0f0f0;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+/* ***************************************** */
+.med-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.med-body > div {
+  margin-bottom: 20px;
+}
+
+.med-body label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.med-body input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+#quantity, #repititionAfter{
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+#repititionAfter{
+  width: 70px;
+}
+
+.med-body input[type="text"]:focus,
+.med-body select:focus {
+  outline: none;
+  box-shadow: 0 0 5px #6c9ce8;
+}
+
+.med-body select {
+  width: 30%;
+}
+
+.med-body input[type="submit"] {
+  background-color: #6c9ce8;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.med-body input[type="submit"]:hover {
+  background-color: #5681c2;
+}
+
+.scroll-view input{
+  height: 36px;
+  margin-right: 5px;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+}
+
+.scroll-view textarea{
+  border: 3px solid #ccc;
+  border-radius: 4px;
+}
+
+
+/* ************************************************** */
+.scroll-view {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  overflow-y: scroll;
+  border: 0.1px solid rgb(120, 116, 116);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 10px;
+}
+
+.scroll-view .scroll-content {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.scroll-view .scroll-content label {
+  display: block;
+  margin-right: 10px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.scroll-view .scroll-content .input-group {
+  display: flex;
+  align-items: center;
+}
+
+.scroll-view .scroll-content .input-group input[type="time"] {
+  margin-right: 10px;
+}
+
+.scroll-view .scroll-content .input-group textarea {
+  margin-right: 10px;
+  flex-grow: 1;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: 0;
+}
+/* ***************************************************** */
+.form-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.form-buttons button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #6c9ce8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-buttons button:hover {
+  background-color: #5681c2;
+}
+
+
+
+
+/*    print pop-up  */
+
+#print{
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 999;
+  background-color: white;
+  width: 400px;
+  max-width: 80%;
+  height: 100px;
+  overflow-y: auto;
+}
+
+#print.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+#print button{
+  cursor: pointer;
+}
+
+#print #cancel-print-btn{
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+}
+
+#print #print-btn{
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+}
+
+#print div{
+  position: absolute;
+    left: 12%;
+    font-size: large;
+}
+
+
+
+
+/*     /////////////////         add patient        ///////////////   */
+
+.patientVerify,
+      .patientAdd {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        transition: 200ms ease-in-out;
+        border: 1px solid black;
+        border-radius: 10px;
+        z-index: 10;
+        background-color: white;
+        width: 500px;
+        max-width: 80%;
+        padding: 20px;
+        text-align: center;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .patientVerify.active,
+      .patientAdd.active {
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .form-content-add-patient {
+        margin-bottom: 20px;
+      }
+
+      .form-content-add-patient label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .form-content-add-patient input[type="number"] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .form-group-add-patient {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .form-label-add-patient {
+        flex: 0 0 150px;
+        text-align: right;
+        margin-right: 20px;
+        font-weight: bold;
+      }
+
+      .form-input-add-patient {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      .form-buttons-add-patient {
+        display: flex;
+        justify-content: center;
+      }
+
+      .form-buttons-add-patient button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        background-color: #6c9ce8;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .form-buttons-add-patient button:hover {
+        background-color: #5681c2;
+      }
+
+
+  /*      ----------         Profile       ----------------  */
+  .patientProfile {
+    position: fixed;
+    top: 13%;
+    left: 13%;
+    transform: translate(-90%,0) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: auto;
+    max-width: 80%;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    height: auto;
+  }
+
+  .patientProfile.active {
+    transform: translate(0, 0) scale(1);      
+  }
+  
+  .patientInfo {
+   display: flex;
+  flex-direction: column;
+  }
+
+  .profile-name,
+.profile-age,
+.profile-gender,
+.profile-phone,
+.profile-email,
+.profile-insurance {
+  margin-bottom: 10px;
+  display: flex;
+  
+}
+
+.label {
+  text-align: left;
+  /* left: 0; */
+  font-weight: bold;
+  color: #555;
+  width: 150px;
+}
+
+.value {
+  width: auto;
+  background-color: #f0f0f0;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.label,
+.value {
+  margin-bottom: 5px;
+}
+
+.patientProfile::before {
+  content: "";
+    border-width: 17px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+    width: 0;
+    height: 0;
+    position: absolute;
+    /* right: 0px; */
+    top: 100px;
+    bottom: 41px;
+    left: -34px; 
+}
+
+
+/*    -----------  Recipes history ---------- */
+
+.recipes-popup {
+  /* display: none; */
+  position: fixed;
+    top: 8%;
+    left: 13%;
+    transform: translate(-90%,10%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: auto;
+    max-width: 80%;
+    min-width: 300px;
+    padding: 20px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    height: auto;
+    min-height: 150px;
+    max-height: 500px;
+}
+
+.recipes-popup::before {
+    content: "";
+    border-width: 17px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+    width: 0;
+    height: 0;
+    position: absolute;
+    /* right: 0px; */
+    top: 100px;
+    bottom: 41px;
+    left: -34px; 
+}
+
+
+
+
+.recipes-popup.active {
+  transform: translate(0,0) scale(1);
+}
+
+.recipes {
+  display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 100%;
+    max-height: 450px;
+}
+.recipe {
+  padding: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    margin-right: 10px;
+}
+
+.doctor {
+  text-align: left;
+  /* left: 0; */
+  font-weight: bold;
+  color: #555;
+  width: 150px;
+
+}
+
+.recipe a{
+  width: auto;
+    /* background-color: #f0f0f0; */
+    /* padding: 5px; */
+    border-radius: 3px;
+    font-weight: bold;
+
+}
+
+
+.doctor, .recipe a {
+  margin-bottom: 5px;
+}
+
+.recipe:hover {
+  cursor: pointer;
+  background-color: #f0f0f0;
+}
+
+.no-recipes {
+  position: absolute;
+    /* left: 50%; */
+    font-size: 23px;
+    margin: 27px;
+}
+
+
+
+ /*     ////////////////////    Diseases  ////////////////*/
+
+
+ .diseases-popup.active {
+  transform: translate(0,0) scale(1);
+ }
+
+ .diseases {
+   display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 100%;
+    max-height: 450px;
+ }
+
+ .diseases-popup {
+  /* display: none; */
+  position: fixed;
+    top: 8%;
+    left: 13%;
+    transform: translate(-90%,10%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: auto;
+    max-width: 80%;
+    min-width: 300px;
+    padding: 20px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    height: auto;
+    min-height: 150px;
+    max-height: 500px;
+}
+
+.diseases-popup::before {
+  content: "";
+  border-width: 17px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+  width: 0;
+  height: 0;
+  position: absolute;
+  /* right: 0px; */
+  top: 48px;
+  bottom: 41px;
+  left: -34px; 
+}
+
+.diseases {
+  padding: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    margin-right: 10px;
+    
+}
+
+.disease {
+  /* padding: 5px;  */
+  margin-bottom: 10px;
+  /* display: flex; */
+  /* margin-right: 10px; */
+  font-size: 20px;
+}
+
+
+.no-diseases {
+  position: relative;
+    /* left: 50%; */
+    font-size: 23px;
+    margin: 27px;
+}
+.diseases-popup button{
+  width: 80%;
+}
+
+.diseases-popup #disease-input{
+  width: 180%;
+    /* position: absolute; */
+    left: 0px;
+    margin: 3px;
+    height: 35px;
+    display: none;
+}
+
+#disease-input.active   {
+  display: block;
+    /* display: unset; */
+    /* position: absolute; */
+}
+
+.add-disease {
+  display: flex;
+}
+
+#save-disease {
+  display: none;
+}
+
+#save-disease.active {
+  display: block;
+}
+ 
+#add-disease.nonactive {
+  display: none;
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctor</title>
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+
+    <!-- Add additional services that you want to use -->
+
+    <!--     firebase SDK       ------------------------------------------->  
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-database.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+  </head>
+  <body>
+
+    <style>
+        body{
+
+        background-color:  RGB(118, 186, 118);
+        }
+    </style>
+    <script type="module" language="javascript"  >
+ 
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+           
+        const firebaseConfig = {
+    apiKey: "AIzaSyBeRqmHHl2FoQXZd0B8hgprG3r5YN0HeXk",
+    authDomain: "dawa2i-be345.firebaseapp.com",
+    databaseURL: "https://dawa2i-be345-default-rtdb.firebaseio.com",
+    projectId: "dawa2i-be345",
+    storageBucket: "dawa2i-be345.appspot.com",
+    messagingSenderId: "1099005588952",
+    appId: "1:1099005588952:web:39a64e3db741352641aead",
+    measurementId: "G-2KKY2TG8MV"
+  };
+       
+         firebase.initializeApp(firebaseConfig);
+       const app = initializeApp(firebaseConfig);
+       const auth = getAuth();
+
+       var accountsRef = firebase.database().ref("patients");     
+// Get references to the search input, search button, and search results div
+
+const searchInput=localStorage.getItem('searchInput');
+
+
+
+var searchResults = document.getElementById("searchResults");
+
+// Add a click event listener to the search button
+
+
+  // Get the search query from the input field
+  var query = searchInput.trim();
+  
+
+  // Create a Firebase query to search for accounts by name
+  var searchQuery = accountsRef.orderByChild("name").startAt(query).endAt(query + "\uf8ff");
+var person;
+
+  // Execute the query
+  searchQuery.once("value").then(function(snapshot) {
+    // Clear the search results div
+    searchResults.innerHTML = "";
+
+    // Loop through the results and add them to the search results div
+    snapshot.forEach(function(childSnapshot) {
+      var patient = childSnapshot.val();
+      var accountHtml = "<p>Name: " + patient.name + ", Age: " + patient.age + "</p>";
+      searchResults.innerHTML += accountHtml;
+
+
+      document.getElementById("name").textContent+=patient.name;
+      document.getElementById("age").textContent+=patient.age;
+      document.getElementById("phone").textContent+=patient.phone;
+      person=patient;
+    });
+  });
+
+const doctor_as_string =localStorage.getItem('doctor');
+const doctor =JSON.parse(doctor_as_string);
+
+
+document.getElementById("print").addEventListener("click",function() {
+var doc = new jsPDF();
+
+
+
+doc.text("Patient",10,10);
+doc.text(person.name,10,30);
+doc.text(String(person.age),10,50);
+
+
+doc.text("Doctor",150,10);
+doc.text(doctor.name,150,30);
+doc.text(doctor.specialitie,150,50);
+doc.text(doctor.adresse,150,70);
+
+
+doc.text("Prescription",80,80);
+
+doc.text(document.getElementById("medicines").value, 80, 120);
+
+
+doc.save("my-document.pdf");
+console.log(doc);
+});
+
+
+
+
+    </script>   
+    <h1 id="name" >Patient name :</h1>
+    <h2 id="age">Age :</h2>
+    <h2 id="phone">Phone number :</h2>
+    
+
+<div id="searchResults"></div>
+
+
+<textarea name="medicines" id="medicines" cols="30" rows="10"></textarea>
+<button id="print"> Print</button>
+</form>
+  </body>
+  </html>
